@@ -2,11 +2,20 @@
 
 <launch>
     <arg name="cheater" default="false"/>
+    <arg name="rviz" default="true" />
+    <arg name="description_name" default="a1_description"/>
 
     <arg name="task_file" default="$(find legged_controllers)/config/task.info"/>
     <arg name="reference_file" default="$(find legged_controllers)/config/reference.info"/>
     <arg name="urdf_file" default="$(find unitree_description)/urdf/a1.urdf"/>
     <arg name="gait_file" default="$(find legged_controllers)/config/gait.info"/>
+    
+    <!-- rviz -->
+    <group if="$(arg rviz)">
+      <param name="$(arg description_name)" textfile="$(arg urdf_file)"/>
+      <arg name="rvizconfig" default="$(find legged_controllers)/rviz/legged_robot.rviz" />
+      <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rvizconfig)" output="screen" />
+    </group>
 
     <!-- make the files into global parameters -->
     <param name="task_file" value="$(arg task_file)"/>
@@ -20,13 +29,16 @@
           output="screen" args="load
           controllers/joint_state_controller
           controllers/legged_controller
+          controllers/legged_controller_projected_wbc
           controllers/legged_cheater_controller
+          controllers/legged_cheater_controller_projected_wbc
 "/>
 
     <node unless="$(arg cheater)" name="controller_loader" pkg="controller_manager" type="controller_manager"
           output="screen" args="load
           controllers/joint_state_controller
           controllers/legged_controller
+          controllers/legged_controller_projected_wbc
 "/>
 
     <node pkg="ocs2_legged_robot_ros" type="legged_robot_gait_command" name="legged_robot_gait_command"

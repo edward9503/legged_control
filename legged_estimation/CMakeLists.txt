@@ -18,6 +18,9 @@ find_package(catkin REQUIRED
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(pinocchio REQUIRED pinocchio)
 
+# Please comment this line if you don't have eigen version problem. If you want to use it, you need to change the eigen include path
+set(pinocchio_INCLUDE_DIRS "/home/bmtsz/NMPC_WBC_ws/devel/include;/opt/ros/noetic/include;/usr/include/eigen3")
+
 catkin_package(
         INCLUDE_DIRS
         include

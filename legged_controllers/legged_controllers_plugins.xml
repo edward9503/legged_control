@@ -7,10 +7,24 @@
         </description>
     </class>
 
+    <class name="legged/LeggedControllerProjectedWBC" type="legged::LeggedControllerProjectedWBC"
+           base_class_type="controller_interface::ControllerBase">
+        <description>
+            The basic legged controller based on the Projected Inverse Dynamics Control.
+        </description>
+    </class>
+
     <class name="legged/LeggedCheaterController" type="legged::LeggedCheaterController"
            base_class_type="controller_interface::ControllerBase">
         <description>
             The basic legged controller with cheat state estimator
+        </description>
+    </class>
+
+    <class name="legged/LeggedCheaterControllerProjectedWBC" type="legged::LeggedCheaterControllerProjectedWBC"
+           base_class_type="controller_interface::ControllerBase">
+        <description>
+            The basic legged controller with cheat state estimator based on the Projected Inverse Dynamics Control
         </description>
     </class>
 </library>
