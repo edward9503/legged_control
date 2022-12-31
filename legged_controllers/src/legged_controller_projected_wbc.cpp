@@ -139,7 +139,8 @@ void LeggedControllerProjectedWBC::update(const ros::Time& time, const ros::Dura
   }
 
   for (size_t j = 0; j < legged_interface_->getCentroidalModelInfo().actuatedDofNum; ++j)
-    hybrid_joint_handles_[j].setCommand(pos_des(j), vel_des(j), 5, 3, torque(j));
+    // hybrid_joint_handles_[j].setCommand(pos_des(j), vel_des(j), 5, 3, torque(j)); // For the original wbc
+    hybrid_joint_handles_[j].setCommand(pos_des(j), vel_des(j), 0, 0, torque(j)); // For Shengzhi's wbc
 
   // Visualization
   visualizer_->update(current_observation_, mpc_mrt_interface_->getPolicy(), mpc_mrt_interface_->getCommand());

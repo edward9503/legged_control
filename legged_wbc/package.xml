@@ -15,5 +15,7 @@
     <depend>roscpp</depend>
     <depend>legged_interface</depend>
     <depend>qpoases_catkin</depend>
+    <depend>osqp</depend>
+    <depend>OsqpEigen</depend>
     <depend>pinocchio</depend>
 </package>

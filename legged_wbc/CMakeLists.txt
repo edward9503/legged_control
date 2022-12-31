@@ -17,6 +17,8 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(pinocchio REQUIRED pinocchio)
 
+find_package(OsqpEigen REQUIRED)
+
 # Please comment this line if you don't have eigen version problem. If you want to use it, you need to change the eigen include path
 set(pinocchio_INCLUDE_DIRS "/home/bmtsz/NMPC_WBC_ws/devel/include;/opt/ros/noetic/include;/usr/include/eigen3")
 
@@ -55,6 +57,7 @@ add_library(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
         ${catkin_LIBRARIES}
         ${pinocchio_LIBRARIES}
+        # OsqpEigen::OsqpEigen
         )
 
 target_compile_options(${PROJECT_NAME} PUBLIC ${OCS2_CXX_FLAGS})
